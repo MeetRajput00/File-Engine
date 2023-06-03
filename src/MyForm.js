@@ -35,20 +35,60 @@ function MyForm() {
   const handleChange = (event) => {
     setInputValue(event.target.value);
   };
-
+  const formStyles = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginBottom: '20px',
+  };
+  
+  const inputStyles = {
+    padding: '10px',
+    marginBottom: '10px',
+    width: '300px',
+  };
+  
+  const buttonStyles = {
+    padding: '10px',
+    backgroundColor: '#4CAF50',
+    color: 'white',
+    border: 'none',
+    cursor: 'pointer',
+  };
+  
+  const listStyles = {
+    listStyleType: 'none',
+    padding: '0',
+  };
+  
+  const listItemStyles = {
+    marginBottom: '10px',
+  };
+  
+  const linkStyles = {
+    textDecoration: 'none',
+    color: 'blue',
+  };
+  
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={inputValue} onChange={handleChange} placeholder="Enter a value" />
-      <button type="submit">Submit</button>
-      <ul>
-        {searchResults.map((result, index) => (
-            <li key={index}>
-            <a href={result.extractedString}>{result.title}</a>
-            </li>
-        ))}
-        </ul>
+    <form onSubmit={handleSubmit} style={formStyles}>
+  <input
+    type="text"
+    value={inputValue}
+    onChange={handleChange}
+    placeholder="Enter a value"
+    style={inputStyles}
+  />
+  <button type="submit" style={buttonStyles}>Submit</button>
+  <ul style={listStyles}>
+    {searchResults.map((result, index) => (
+      <li key={index} style={listItemStyles}>
+        <a href={result.extractedString} style={linkStyles}>{result.title}</a>
+      </li>
+    ))}
+  </ul>
+</form>
 
-    </form>
   );
 }
 
