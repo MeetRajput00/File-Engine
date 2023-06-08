@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './MyForm.css';
 function MyForm() {
   const [inputValue, setInputValue] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -35,59 +35,36 @@ function MyForm() {
   const handleChange = (event) => {
     setInputValue(event.target.value);
   };
-  const formStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginBottom: '20px',
-  };
-  
-  const inputStyles = {
-    padding: '10px',
-    marginBottom: '10px',
-    width: '300px',
-  };
-  
-  const buttonStyles = {
-    padding: '10px',
-    backgroundColor: '#4CAF50',
-    color: 'white',
-    border: 'none',
-    cursor: 'pointer',
-  };
-  
-  const listStyles = {
-    listStyleType: 'none',
-    padding: '0',
-  };
-  
-  const listItemStyles = {
-    marginBottom: '10px',
-  };
-  
-  const linkStyles = {
-    textDecoration: 'none',
-    color: 'blue',
-  };
   
   return (
-    <form onSubmit={handleSubmit} style={formStyles}>
+      <div className='component'>
+        <div className='centered-div'>
+      <div className='input-wrap'>
   <input
     type="text"
     value={inputValue}
     onChange={handleChange}
-    placeholder="Enter a value"
-    style={inputStyles}
+    placeholder="Search Files"
+    name="product-search" 
+    id="product-search" 
   />
-  <button type="submit" style={buttonStyles}>Submit</button>
-  <ul style={listStyles}>
-    {searchResults.map((result, index) => (
-      <li key={index} style={listItemStyles}>
-        <a href={result.extractedString} style={linkStyles}>{result.title}</a>
-      </li>
-    ))}
-  </ul>
-</form>
+  <button type="submit" onClick={handleSubmit}>Search</button>
+  
+  </div>
+  <ul className="SearchResults">
+  {searchResults.map((result, index) => (
+    <li key={index}>
+      <a href={result.extractedString} className="SearchResults-link">
+        <h3 className="SearchResults-title">{result.title}</h3>
+        <cite className="SearchResults-url">{result.extractedString}</cite>
+        <p className="SearchResults-snippet">{result.snippet}</p>
+      </a>
+    </li>
+  ))}
+</ul>
+</div>
+</div>
+
 
   );
 }
