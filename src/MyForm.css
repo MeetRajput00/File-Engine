@@ -10,6 +10,7 @@
   height: 80%; /* Adjust the max-height to your preference */
   margin: auto;
   justify-content: center;
+  display: flex;
   flex-direction: column;
   align-items: center;
   }
@@ -49,7 +50,7 @@
     color: white;
     opacity: 0.7;
   }
-  button {
+  .submitButton {
     background:#666ed8;
     padding:12px 12px;
     border:none;
@@ -59,13 +60,19 @@
     color:white;
     box-shadow:1px 2px 3px rgba(0,0,0,0.3);
   } 
-  button:hover{
+  .submitButton:hover{
     background:#5a60be;
   }
   .SearchResults {
     list-style-type: none;
     padding: 0;
     align-self: flex-start;
+  }
+  .LoadingScreen{
+    margin: auto;
+    margin-top: 40%;
+    align-self: center;
+    justify-content: center;
   }
   
   
@@ -100,3 +107,19 @@
       width: 96%;
     }
   }
+ 
+  .file-type-dropdown {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 200px;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .file-type-dropdown option {
+    background-color: #fff;
+    color: #333;
+  }
+  
