@@ -13,13 +13,13 @@ function MyForm() {
     console.log('Submitted value:', inputValue);
     var fileType = document.getElementById("file-type").value;
 
-    var req=`https://googledrivescraper-production.up.railway.app/googleDrive?q=${inputValue}`;
+    var req=`${process.env.API_SITE}/googleDrive?q=${inputValue}`;
     switch (fileType) {
       case "google-drive":
-        req=`https://googledrivescraper-production.up.railway.app/googleDrive?q=${inputValue}`;
+        req=`${process.env.API_SITE}/googleDrive?q=${inputValue}`;
         break;
       case "media":
-        req=`https://googledrivescraper-production.up.railway.app/media?q=${inputValue}`;
+        req=`${process.env.API_SITE}/media?q=${inputValue}`;
         break;
       case "pdf":
       case "html":
@@ -33,7 +33,7 @@ function MyForm() {
       case "json":
       case "sql":
       case "md":
-        req=`https://googledrivescraper-production.up.railway.app/files?q=${inputValue}&type=${fileType}`;
+        req=`${process.env.API_SITE}/files?q=${inputValue}&type=${fileType}`;
         break;
       default:
         // Handle default case
