@@ -13,13 +13,13 @@ function MyForm() {
     console.log('Submitted value:', inputValue);
     var fileType = document.getElementById("file-type").value;
 
-    var req=`${process.env.API_SITE}/googleDrive?q=${inputValue}`;
+    var req=`https://filescraper.onrender.com/googleDrive?q=${inputValue}`;
     switch (fileType) {
       case "google-drive":
-        req=`${process.env.API_SITE}/googleDrive?q=${inputValue}`;
+        req=`https://filescraper.onrender.com/googleDrive?q=${inputValue}`;
         break;
       case "media":
-        req=`${process.env.API_SITE}/media?q=${inputValue}`;
+        req=`https://filescraper.onrender.com/media?q=${inputValue}`;
         break;
       case "pdf":
       case "html":
@@ -33,7 +33,7 @@ function MyForm() {
       case "json":
       case "sql":
       case "md":
-        req=`${process.env.API_SITE}/files?q=${inputValue}&type=${fileType}`;
+        req=`https://filescraper.onrender.com/files?q=${inputValue}&type=${fileType}`;
         break;
       default:
         // Handle default case
@@ -52,13 +52,11 @@ function MyForm() {
           const data = await response.json();
           console.log('API Response:', data);
           setSearchResults(data);
-          // Handle the API response data here
         } else {
           throw new Error('API request failed');
         }
       } catch (error) {
         console.error('API Error:', error);
-        // Handle the API error here
       }
       setTimeout(()=>{
         setIsLoading(false);
